@@ -50,7 +50,7 @@ nav:nth-child(1) {
 .domoForm {
     border: 2px solid #338acc;
     height: 35px;
-    width: 700px;
+    width: 1400px;
     margin-top:0px;
     padding-top:10px;
     background-color: #55acee;
@@ -69,6 +69,17 @@ nav:nth-child(1) {
 
 .domoForm input[type=text] {
     float:left;
+    margin-left: 10px;
+}
+
+.domoForm input[type=number] {
+    float:left;
+    margin-left: 10px;
+}
+
+.domoForm select {
+    float:left;
+    margin-left: 10px;
 }
 
 .makeDomoSubmit {

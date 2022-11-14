@@ -22,6 +22,10 @@ const DomoSchema = new mongoose.Schema({
     required: true,
     ref: 'Account',
   },
+  color: {
+    type: String,
+    required: true,
+  },
   createdDate: {
     type: Date,
     default: Date.now,
@@ -31,6 +35,7 @@ const DomoSchema = new mongoose.Schema({
 DomoSchema.statics.toAPI = (doc) => ({
   name: doc.name,
   age: doc.age,
+  color: doc.color,
 });
 
 DomoSchema.statics.findByOwner = (ownerId, callback) => {
@@ -39,7 +44,11 @@ DomoSchema.statics.findByOwner = (ownerId, callback) => {
     owner: mongoose.Types.ObjectId(ownerId),
   };
 
-  return DomoModel.find(search).select('name age').lean().exec(callback);
+  return DomoModel.find(search).select('name age color').lean().exec(callback);
+};
+
+DomoSchema.statics.findAll = (callback) => {
+  return DomoModel.find().select('name age color').lean().exec(callback);
 };
 
 DomoModel = mongoose.model('Domo', DomoSchema);
